@@ -22,8 +22,8 @@
 
 | Column           | Type       | Options                        |
 |------------------|------------|--------------------------------|
-| item_name        | string     | null: false                    |
-| item_description | text       | null: false                    |
+| name             | string     | null: false                    |
+| description      | text       | null: false                    |
 | category_id      | integer    | null: false                    |
 | status_id        | integer    | null: false                    |
 | delivery_id      | integer    | null: false                    |
@@ -48,7 +48,7 @@
 
 - belong_to :user
 - belong_to :item
-- has_many :addresses
+- has_one :address
 
 ## addresses テーブル
 
