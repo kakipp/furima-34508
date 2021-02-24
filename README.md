@@ -27,7 +27,7 @@
 | category_id      | integer    | null: false                    |
 | status_id        | integer    | null: false                    |
 | delivery_id      | integer    | null: false                    |
-| my_area_id       | integer    | null: false                    |
+| area_id          | integer    | null: false                    |
 | delivery_days_id | integer    | null: false                    |
 | price            | integer    | null: false                    |
 | user             | references | null: false, foreign_key: true |
@@ -57,11 +57,11 @@
 |-----------------|------------|--------------------------------|
 | buy_user        | references | null: false, foreign_key: true |
 | address_number  | string     | null: false                    |
-| prefectures_id  | integer    | null: false                    |
+| area_id         | integer    | null: false                    |
 | ship_city       | string     | null: false                    |
 | ship_address    | string     | null: false                    |
 | ship_to_address | string     |                                |
-| telephone       | integer    | null: false, unique: true      |
+| telephone       | string     | null: false, unique: true      |
 
 ### Association
 
