@@ -2,14 +2,16 @@
 
 ## users テーブル
 
-| Column     | Type   | Options                   |
-|------------|--------|---------------------------|
-| email      | string | null: false, unique: true |
-| password   | string | null: false               |
-| nick name  | string | null: false               |
-| first name | string | null: false               |
-| last name  | string | null: false               |
-| birth day  | string | null: false               |
+| Column              | Type   | Options                   |
+|---------------------|--------|---------------------------|
+| email               | string | null: false, unique: true |
+| encrypted_password  | string | null: false               |
+| nick_name           | string | null: false               |
+| first_name          | string | null: false               |
+| first_name_furigana | string | null: false               |
+| last_name           | string | null: false               |
+| last_name_furigana  | string | null: false               |
+| birth_day           | date   | null: false               |
 
 ### Association
 
@@ -21,21 +23,20 @@
 
 | Column           | Type       | Options                        |
 |------------------|------------|--------------------------------|
-| item name        | string     | null: false                    |
-| item description | text       | null: false                    |
-| category         | string     | null: false                    |
-| status           | string     | null: false                    |
-| delivery         | string     | null: false                    |
-| my area          | string     | null: false                    |
-| delivery days    | string     | null: false                    |
-| price            | string     | null: false                    |
-| user             | references | null: false, foreign_key: true |
+| item_name        | string     | null: false                    |
+| item_description | text       | null: false                    |
+| category_id      | integer    | null: false                    |
+| status_id        | integer    | null: false                    |
+| delivery_id      | integer    | null: false                    |
+| my_area_id       | integer    | null: false                    |
+| delivery_days_id | integer    | null: false                    |
+| price            | integer    | null: false                    |
 | buy              | references | null: false, foreign_key: true |
 
 ### Association
 
-- belong_to :users
-- has_one :buys
+- belong_to :user
+- has_one :buy
 
 ## buys テーブル
 
@@ -48,8 +49,8 @@
 
 - has_many :buy_users
 - has_many :users, through: buy_users
-- has_one :items
-- has_one :addresses
+- has_one :item
+- has_one :address
 
 ## buy_users テーブル
 
@@ -68,10 +69,13 @@
 | Column          | Type       | Options                        |
 |-----------------|------------|--------------------------------|
 | buy             | references | null: false, foreign_key: true |
-| ship city       | string     | null: false                    |
-| ship address    | text       | null: false                    |
-| ship to address | text       | null: false                    |
+| address_number  | integer    | null: false                    |
+| Prefectures_id  | integer    | null: false                    |
+| ship_city       | text       | null: false                    |
+| ship_address    | text       | null: false                    |
+| ship_to_address | text       | null: false                    |
+| telephone       | integer    | null: false, unique: true      |
 
 ### Association
 
-- has_one :buys
+- has_one :buy
