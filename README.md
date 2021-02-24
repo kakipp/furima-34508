@@ -30,6 +30,7 @@
 | my_area_id       | integer    | null: false                    |
 | delivery_days_id | integer    | null: false                    |
 | price            | integer    | null: false                    |
+| user             | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -59,7 +60,7 @@
 | prefectures_id  | integer    | null: false                    |
 | ship_city       | string     | null: false                    |
 | ship_address    | string     | null: false                    |
-| ship_to_address | string     | null: false                    |
+| ship_to_address | string     |                                |
 | telephone       | integer    | null: false, unique: true      |
 
 ### Association
