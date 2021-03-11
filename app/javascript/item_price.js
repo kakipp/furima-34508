@@ -11,3 +11,5 @@ window.addEventListener("DOMContentLoaded", () => {
           profitDom.innerHTML = Math.ceil(inputValue * 0.9).toLocaleString();
     })
 });
+
+
