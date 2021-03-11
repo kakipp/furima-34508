@@ -2,7 +2,7 @@ class BuyUsersController < ApplicationController
     before_action :authenticate_user!
     before_action :set_buy_users, only: [:index, :create]
     def index
-        if @item.buy_user.blank?
+        if @item.buy_user.blank? && current_user.id != @item.user_id
             @buy_user_address = BuyUserAddress.new
         else
             redirect_to root_path
@@ -38,4 +38,5 @@ class BuyUsersController < ApplicationController
             currency: 'jpy'                
         )
     end
+    
 end
