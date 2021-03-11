@@ -6,8 +6,9 @@ FactoryBot.define do
       ship_address {"寿台５−３−１"}
       ship_to_address {"ハイツ３０９"}
       telephone {"09012345678"}
-      item_id {1}
-      user_id {1}
       token {"tok_abcdefghijk00000000000000000"}
+      item_id {FactoryBot.create(:item).id}
+      user_id {FactoryBot.create(:user).id}
+      
   end
 end

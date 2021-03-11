@@ -4,6 +4,7 @@ RSpec.describe BuyUserAddress, type: :model do
   describe '#create' do
     before do
       @buy_user_address = FactoryBot.build(:buy_user_address)
+      sleep 0.1
     end
 
     describe '商品購入機能' do
@@ -77,10 +78,25 @@ RSpec.describe BuyUserAddress, type: :model do
           @buy_user_address.valid?
           expect(@buy_user_address.errors.full_messages).to include("Telephone is invalid")
         end
+        it 'telephoneが英数混合の場合' do
+          @buy_user_address.telephone = "090abcdabcd"
+          @buy_user_address.valid?
+          expect(@buy_user_address.errors.full_messages).to include("Telephone is invalid")
+        end
         it "tokenが空の場合" do
           @buy_user_address.token = nil
           @buy_user_address.valid?
           expect(@buy_user_address.errors.full_messages).to include("Token can't be blank")
+        end
+        it "user_idない場合" do
+          @buy_user_address.user_id = nil
+          @buy_user_address.valid?
+          expect(@buy_user_address.errors.full_messages).to include("User can't be blank")
+        end
+        it "item_idがない場合" do
+          @buy_user_address.item_id = nil
+          @buy_user_address.valid?
+          expect(@buy_user_address.errors.full_messages).to include("Item can't be blank")
         end
       end
     end
