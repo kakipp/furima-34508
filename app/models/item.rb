@@ -8,11 +8,13 @@ class Item < ApplicationRecord
 
     belongs_to :user
     has_one_attached :image
+    has_one :buy_user
 
     with_options presence: true do
         validates :name
         validates :description
         validates :image
+        validates :user_id
     end
 
     with_options numericality: { other_than: 1 } do
