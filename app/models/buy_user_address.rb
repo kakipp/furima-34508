@@ -14,7 +14,7 @@ class BuyUserAddress
     end
     def save
        
-        buy_user = BuyUser.create(item_id: item_id, user_id: user_id, token: token)
+        buy_user = BuyUser.create(item_id: item_id, user_id: user_id)
         
         Address.create(address_number: address_number, area_id: area_id, ship_city: ship_city, ship_address: ship_address, ship_to_address: ship_to_address, telephone: telephone, buy_user_id: buy_user.id)
     end
